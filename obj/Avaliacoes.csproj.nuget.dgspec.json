@@ -1,23 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\projetos\\Alura\\Avaliacoes\\Avaliacoes.csproj": {}
+    "C:\\Users\\evert\\source\\csharp_workspace\\AvaliacaoIssi\\Avaliacoes.csproj": {}
   },
   "projects": {
-    "C:\\projetos\\Alura\\Avaliacoes\\Avaliacoes.csproj": {
+    "C:\\Users\\evert\\source\\csharp_workspace\\AvaliacaoIssi\\Avaliacoes.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\projetos\\Alura\\Avaliacoes\\Avaliacoes.csproj",
+        "projectUniqueName": "C:\\Users\\evert\\source\\csharp_workspace\\AvaliacaoIssi\\Avaliacoes.csproj",
         "projectName": "Avaliacoes",
-        "projectPath": "C:\\projetos\\Alura\\Avaliacoes\\Avaliacoes.csproj",
-        "packagesPath": "C:\\Users\\p-espresso.labs5\\.nuget\\packages\\",
-        "outputPath": "C:\\projetos\\Alura\\Avaliacoes\\obj\\",
+        "projectPath": "C:\\Users\\evert\\source\\csharp_workspace\\AvaliacaoIssi\\Avaliacoes.csproj",
+        "packagesPath": "C:\\Users\\evert\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\evert\\source\\csharp_workspace\\AvaliacaoIssi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\p-espresso.labs5\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\evert\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -27,8 +28,7 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {},
-          "https://pkgs.dev.azure.com/CMCapital/Packages/_packaging/CMCapitalPakages/nuget/v3/index.json": {},
-          "https://pkgs.dev.azure.com/CMCapital/_packaging/CMCapital-Feed%40Local/nuget/v3/index.json": {}
+          "https://pkgs.dev.azure.com/CMCapital/Packages/_packaging/CMCapitalPakages/nuget/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
@@ -75,8 +75,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -88,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     }
