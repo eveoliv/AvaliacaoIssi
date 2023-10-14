@@ -1,0 +1,48 @@
+﻿@model Avaliacoes.Domain.Usuario
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+body { 
+  background-image: url('caveira.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center; 
+  background-size: 190px;
+}
+</style>
+
+<div class="text-center">
+    <h1 class="display-4">Bem vindo!</h1>
+    <p>Digite seu endereço de email para acessar as próximas graduações de sua Divisão.</p>
+</div>
+
+
+<div class="row">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+        <form asp-action="Validar">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <br />
+           
+            <div class="form-group">
+                <input type="submit" value="Entrar" class="btn btn-dark" />
+            </div>
+
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

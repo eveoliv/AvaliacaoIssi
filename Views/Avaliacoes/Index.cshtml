@@ -1,0 +1,167 @@
+﻿@model IEnumerable<Avaliacoes.Models.AvaliacaoViewModel>
+
+@{
+    ViewData["Title"] = "ISSI";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<h3>Lista de Integrantes para próxima graduação</h3>
+<br>
+
+<table class="table table-striped table-bordered">
+    <thead style="font-size: 14px">
+        <tr>
+            <th>
+                Qtd
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Divisao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Grau)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DattaPP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataMeio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataFull)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Acoes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pubs)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bondes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contencao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estudos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Financeiro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Operacional)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dedicacao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Frequencia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nota)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Avaliador)
+            </th>
+            <th>
+                Avaliar
+            </th>
+        </tr>
+    </thead>
+    <tbody style="font-size: 14px">
+        @{
+            int contador = 1; 
+        }
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="text-align: center">
+                    @contador
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Divisao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td style="text-align: center">
+                    @Html.DisplayFor(modelItem => item.Grau)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DattaPP)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataMeio)
+                </td>
+                <td>
+                    @if(item.Grau != "X")
+                    @Html.DisplayFor(modelItem => item.DataFull)
+                </td>
+                    <td style="text-align: center">
+                    @Html.DisplayFor(modelItem => item.Acoes)
+                </td>
+                    <td style="text-align: center">
+                    @Html.DisplayFor(modelItem => item.Pubs)
+                </td>
+                    <td style="text-align: center">
+                    @Html.DisplayFor(modelItem => item.Bondes)
+                </td>
+                    <td style="text-align: center">
+                    @Html.DisplayFor(modelItem => item.Contencao)
+                </td>
+                    <td style="text-align: center">
+                    @Html.DisplayFor(modelItem => item.Estudos)
+                </td>
+                    <td style="text-align: center">
+                    @Html.DisplayFor(modelItem => item.Financeiro)
+                </td>
+                    <td style="text-align: center">
+                    @Html.DisplayFor(modelItem => item.Operacional)
+                </td>
+                    <td style="text-align: center">
+                    @Html.DisplayFor(modelItem => item.Dedicacao)
+                </td>
+                    <td style="text-align: center">
+                    @Html.DisplayFor(modelItem => item.Frequencia)
+                </td>
+
+                    <td style="text-align: center">
+                    @Html.DisplayFor(modelItem => item.Nota)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Avaliador)
+                </td>
+                  <td style="text-align: center">
+                   <a asp-action="Edit" asp-route-id="@item.AvaliacaoId" class="fa fa-edit"></a>                   
+                </td>
+            </tr>
+            contador++;
+        }
+    </tbody>
+</table>
+
+<br />
+<div style="display: flex">
+    <div style="flex: 1">
+        <div style="font-size: 14px">
+            <p><b>Ações: </b>Participação nas Ações Sociais da Divisão e Regional</p>
+            <p><b>Pubs: </b>Participação nos Pubs da Divisão e Regional</p>
+            <p><b>Bondes: </b>Participação nos Bondes da Divisão e Regional</p>
+            <p><b>Contenção: </b>Participação nas Contenções do Comando Grau III, II, I</p>
+            <p><b>Financeiro: </b>Assiduidade no pagamento das mensalidades</p>
+        </div>
+    </div>
+    <div style="flex: 1">
+        <div style="font-size: 14px">
+            <p><b>Operacional: </b>Participação nas funções de operacionais da Divisão e Regional (Ex: batedor)</p>
+            <p><b>Estudos: </b>Participação nos Insights postados pelo Operacional</p>
+            <p><b>Dedicação: </b>Proatividade na execução de tarefas da Divisão (Ex: recepção, limpeza)</p>
+            <p><b>Frequência: </b>Participação nos eventos de outras Divisões</p>
+            <p><b>Nota: </b>Resultado da avaliação. Deverá alcançar no mínimo 7 para receber a graduação</p>
+        </div>
+    </div>
+</div>
+
+
