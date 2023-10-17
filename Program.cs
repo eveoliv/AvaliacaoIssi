@@ -1,6 +1,8 @@
 using Avaliacoes.Context;
-using System.Configuration;
+using System.Globalization;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace Avaliacoes
 {
@@ -9,11 +11,22 @@ namespace Avaliacoes
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            
-            builder.Services.AddDbContext<AvaliacaoDbContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConn")));
-            
+
+            //builder.Services.AddDbContext<AvaliacaoDbContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString("SqLiteConn")));
+            builder.Services.AddDbContext<AvaliacaoDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServCon")));
+
             // Add services to the container.            
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
+            {
+                options.Cookie.Name = "graduacaokook"; 
+                options.Cookie.HttpOnly = true; 
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+                options.SlidingExpiration = true;
+            });
+
+            builder.Services.AddAuthorization();
 
             var app = builder.Build();
 
@@ -25,16 +38,22 @@ namespace Avaliacoes
                 app.UseHsts();
             }
 
+            app.UseRequestLocalization(new RequestLocalizationOptions
+            {
+                SupportedCultures = new List<CultureInfo> { new CultureInfo("pt-BR") },
+                SupportedUICultures = new List<CultureInfo> { new CultureInfo("pt-BR") },
+                DefaultRequestCulture = new RequestCulture("pt-BR")
+            });
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
-            app.MapControllerRoute(
-                name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+            app.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
 
             app.Run();
         }

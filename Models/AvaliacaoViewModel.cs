@@ -10,7 +10,7 @@ namespace Avaliacoes.Models
         public string Grau { get; set; }
         [DisplayName("PP")]
         [DisplayFormat(DataFormatString = "{0:d}")]
-        public DateTime DattaPP { get; set; }
+        public DateTime DataPP { get; set; }
         [DisplayName("Meio")]
         [DisplayFormat(DataFormatString = "{0:d}")]
         public DateTime DataMeio { get; set; }

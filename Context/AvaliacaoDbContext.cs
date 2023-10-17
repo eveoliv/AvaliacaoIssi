@@ -14,7 +14,7 @@ namespace Avaliacoes.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Usuario>().HasMany(a => a.Avaliacoes).WithOne(u => u.Usuario).HasForeignKey(a => a.AvaliacaoId);           
+            modelBuilder.Entity<Usuario>().HasMany(a => a.Avaliacoes).WithOne(u => u.Usuario).HasForeignKey(a => a.UsuarioId);           
             modelBuilder.Entity<Divisao>().HasMany(u => u.Usuarios).WithOne(d => d.Divisao).HasForeignKey(d => d.DivisaoId);            
         }
     }

@@ -1,8 +1,11 @@
 ﻿using Avaliacoes.Models;
+using Avaliacoes.Domain;
 using Avaliacoes.Context;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Avaliacoes.Domain;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
 
 namespace Avaliacoes.Controllers
 {
@@ -24,14 +27,20 @@ namespace Avaliacoes.Controllers
         {
             try
             {
-                var validaUsuario = _context.Usuario.Where(u => u.Email == email);
+                var usuario = _context.Usuario.Where(u => u.Email == email);
 
-                if (validaUsuario.Any())
+                if (usuario.Any())
                 {
-                    var usuario = validaUsuario.FirstOrDefault();
-                    Acesso.usuario = usuario.UsuarioId;
+                    var claims = new List<Claim>
+                    { 
+                        new Claim(ClaimTypes.Name, email)
+                    };
+
+                    HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, 
+                        new ClaimsPrincipal(new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme)));
+
                     return RedirectToAction("Index", "Avaliacoes");
-                }             
+                }
             }
             catch (Exception)
             {

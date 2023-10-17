@@ -8,70 +8,70 @@
 <br>
 
 <table class="table table-striped table-bordered">
-    <thead style="font-size: 14px">
+    <thead style="font-size: 12px">
         <tr>
             <th>
                 Qtd
             </th>
-            <th>
+            <th style="text-align: center">
                 @Html.DisplayNameFor(model => model.Divisao)
             </th>
-            <th>
+            <th style="text-align: center">
                 @Html.DisplayNameFor(model => model.Nome)
             </th>
-            <th>
+            <th style="text-align: center">
                 @Html.DisplayNameFor(model => model.Grau)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DattaPP)
+            <th style="text-align: center">
+                @Html.DisplayNameFor(model => model.DataPP)
             </th>
-            <th>
+            <th style="text-align: center">
                 @Html.DisplayNameFor(model => model.DataMeio)
             </th>
-            <th>
+            <th style="text-align: center">
                 @Html.DisplayNameFor(model => model.DataFull)
             </th>
-            <th>
+            <th style="text-align: center">
                 @Html.DisplayNameFor(model => model.Acoes)
             </th>
-            <th>
+            <th style="text-align: center">
                 @Html.DisplayNameFor(model => model.Pubs)
             </th>
-            <th>
+            <th style="text-align: center">
                 @Html.DisplayNameFor(model => model.Bondes)
             </th>
-            <th>
+            <th style="text-align: center">
                 @Html.DisplayNameFor(model => model.Contencao)
             </th>
-            <th>
+            <th style="text-align: center">
                 @Html.DisplayNameFor(model => model.Estudos)
             </th>
-            <th>
+            <th style="text-align: center">
                 @Html.DisplayNameFor(model => model.Financeiro)
             </th>
-            <th>
+            <th style="text-align: center">
                 @Html.DisplayNameFor(model => model.Operacional)
             </th>
-            <th>
+            <th style="text-align: center">
                 @Html.DisplayNameFor(model => model.Dedicacao)
             </th>
-            <th>
+            <th style="text-align: center">
                 @Html.DisplayNameFor(model => model.Frequencia)
             </th>
-            <th>
+            <th style="text-align: center">
                 @Html.DisplayNameFor(model => model.Nota)
             </th>
-            <th>
+            <th style="text-align: center">
                 @Html.DisplayNameFor(model => model.Avaliador)
             </th>
-            <th>
+            <th style="text-align: center">
                 Avaliar
             </th>
         </tr>
     </thead>
-    <tbody style="font-size: 14px">
+    <tbody style="font-size: 12px">
         @{
-            int contador = 1; 
+            int contador = 1;
         }
 
         @foreach (var item in Model)
@@ -90,51 +90,67 @@
                     @Html.DisplayFor(modelItem => item.Grau)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.DattaPP)
+                    @Html.DisplayFor(modelItem => item.DataPP)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.DataMeio)
                 </td>
                 <td>
-                    @if(item.Grau != "X")
-                    @Html.DisplayFor(modelItem => item.DataFull)
-                </td>
-                    <td style="text-align: center">
-                    @Html.DisplayFor(modelItem => item.Acoes)
-                </td>
-                    <td style="text-align: center">
-                    @Html.DisplayFor(modelItem => item.Pubs)
-                </td>
-                    <td style="text-align: center">
-                    @Html.DisplayFor(modelItem => item.Bondes)
-                </td>
-                    <td style="text-align: center">
-                    @Html.DisplayFor(modelItem => item.Contencao)
-                </td>
-                    <td style="text-align: center">
-                    @Html.DisplayFor(modelItem => item.Estudos)
-                </td>
-                    <td style="text-align: center">
-                    @Html.DisplayFor(modelItem => item.Financeiro)
-                </td>
-                    <td style="text-align: center">
-                    @Html.DisplayFor(modelItem => item.Operacional)
-                </td>
-                    <td style="text-align: center">
-                    @Html.DisplayFor(modelItem => item.Dedicacao)
-                </td>
-                    <td style="text-align: center">
-                    @Html.DisplayFor(modelItem => item.Frequencia)
-                </td>
+                    @if (item.Grau != "X")
+                        @Html.DisplayFor(modelItem => item.DataFull)
 
+                    </td>
                     <td style="text-align: center">
-                    @Html.DisplayFor(modelItem => item.Nota)
+                        @Html.DisplayFor(modelItem => item.Acoes)
+                    </td>
+                    <td style="text-align: center">
+                        @Html.DisplayFor(modelItem => item.Pubs)
+                    </td>
+                    <td style="text-align: center">
+                        @Html.DisplayFor(modelItem => item.Bondes)
+                    </td>
+                    <td style="text-align: center">
+                        @Html.DisplayFor(modelItem => item.Contencao)
+                    </td>
+                    <td style="text-align: center">
+                        @Html.DisplayFor(modelItem => item.Estudos)
+                    </td>
+                    <td style="text-align: center">
+                        @Html.DisplayFor(modelItem => item.Financeiro)
+                    </td>
+                    <td style="text-align: center">
+                        @Html.DisplayFor(modelItem => item.Operacional)
+                    </td>
+                    <td style="text-align: center">
+                        @Html.DisplayFor(modelItem => item.Dedicacao)
+                    </td>
+                    <td style="text-align: center">
+                        @Html.DisplayFor(modelItem => item.Frequencia)
+                    </td>
+                    <td style="text-align: center">
+                        @if (item.Nota > 0 && item.Nota <= 6)
+                    {
+                        <span style="color: red">
+                            <strong>
+                                @Html.DisplayFor(modelItem => item.Nota)
+                            </strong>
+                        </span>
+                    }else if(item.Nota >= 7)
+                    {
+                        <span style="color: limegreen">
+                            <strong>
+                                @Html.DisplayFor(modelItem => item.Nota)
+                            </strong>
+                        </span>
+                    }else{
+                        @Html.DisplayFor(modelItem => item.Nota)
+                    }
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Avaliador)
                 </td>
-                  <td style="text-align: center">
-                   <a asp-action="Edit" asp-route-id="@item.AvaliacaoId" class="fa fa-edit"></a>                   
+                <td style="text-align: center">
+                    <a asp-action="Edit" asp-route-id="@item.AvaliacaoId" class="fa fa-edit"></a>
                 </td>
             </tr>
             contador++;

@@ -4,9 +4,11 @@ using Avaliacoes.Context;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Avaliacoes.Controllers
 {
+    [Authorize]
     public class AvaliacoesController : Controller
     {
         private readonly AvaliacaoDbContext _context;
@@ -20,7 +22,8 @@ namespace Avaliacoes.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var usuario = _context.Usuario.Where(u => u.UsuarioId == Acesso.usuario).FirstOrDefault();
+            var username = HttpContext.User.Identity.Name;
+            var usuario = _context.Usuario.Where(u => u.Email == username).FirstOrDefault();
 
             if (usuario.Admin == 1)
                 return View(await (from a in _context.Avaliacao
@@ -31,7 +34,7 @@ namespace Avaliacoes.Controllers
                                        AvaliacaoId = a.AvaliacaoId,
                                        Divisao = c.Nome,
                                        Nome = a.Nome,
-                                       DattaPP = a.DattaPP,
+                                       DataPP = a.DataPP,
                                        DataMeio = a.DataMeio,
                                        DataFull = a.DataFull,
                                        Acoes = a.Acoes,
@@ -57,7 +60,7 @@ namespace Avaliacoes.Controllers
                                    AvaliacaoId = a.AvaliacaoId,
                                    Divisao = c.Nome,
                                    Nome = a.Nome,
-                                   DattaPP = a.DattaPP,
+                                   DataPP = a.DataPP,
                                    DataMeio = a.DataMeio,
                                    DataFull = a.DataFull,
                                    Acoes = a.Acoes,
@@ -85,7 +88,7 @@ namespace Avaliacoes.Controllers
                                    AvaliacaoId = a.AvaliacaoId,
                                    Divisao = c.Nome,
                                    Nome = a.Nome,
-                                   DattaPP = a.DattaPP,
+                                   DataPP = a.DataPP,
                                    DataMeio = a.DataMeio,
                                    DataFull = a.DataFull,
                                    Acoes = a.Acoes,
@@ -111,7 +114,7 @@ namespace Avaliacoes.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("AvaliacaoId,Nome,Grau,DattaPP,DataMeio,DataFull,Acoes,Pubs,Bondes,Contencao,Estudos,Financeiro,Operacional,Dedicacao,Frequencia,Nota,Avaliador,DivisaoId,UsuarioId")] Avaliacao avaliacao)
+        public async Task<IActionResult> Create([Bind("AvaliacaoId,Nome,Grau,DataPP,DataMeio,DataFull,Acoes,Pubs,Bondes,Contencao,Estudos,Financeiro,Operacional,Dedicacao,Frequencia,Nota,Avaliador,DivisaoId,UsuarioId")] Avaliacao avaliacao)
         {
             if (ModelState.IsValid)
             {
@@ -141,7 +144,7 @@ namespace Avaliacoes.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("AvaliacaoId,Nome,Grau,DattaPP,DataMeio,DataFull,Acoes,Pubs,Bondes,Contencao,Estudos,Financeiro,Operacional,Dedicacao,Frequencia,Nota,Avaliador,DivisaoId,UsuarioId")] Avaliacao avaliacao)
+        public async Task<IActionResult> Edit(int id, [Bind("AvaliacaoId,Nome,Grau,DataPP,DataMeio,DataFull,Acoes,Pubs,Bondes,Contencao,Estudos,Financeiro,Operacional,Dedicacao,Frequencia,Nota,Avaliador,DivisaoId,UsuarioId")] Avaliacao avaliacao)
         {
             if (id != avaliacao.AvaliacaoId)
             {
