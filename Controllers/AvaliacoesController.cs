@@ -29,6 +29,8 @@ namespace Avaliacoes.Controllers
                 return View(await (from a in _context.Avaliacao
                                    join b in _context.Usuario on a.UsuarioId equals b.UsuarioId
                                    join c in _context.Divisao on a.DivisaoId equals c.DivisaoId
+                                   where a.Exibir == true
+                                   orderby a.DivisaoId ascending
                                    select new AvaliacaoViewModel
                                    {
                                        AvaliacaoId = a.AvaliacaoId,
@@ -55,6 +57,8 @@ namespace Avaliacoes.Controllers
                                join b in _context.Usuario on a.UsuarioId equals b.UsuarioId
                                join c in _context.Divisao on a.DivisaoId equals c.DivisaoId
                                where b.UsuarioId == usuario.UsuarioId
+                               where a.Exibir == true
+                               orderby a.DivisaoId ascending
                                select new AvaliacaoViewModel
                                {
                                    AvaliacaoId = a.AvaliacaoId,
@@ -83,6 +87,7 @@ namespace Avaliacoes.Controllers
             return View(await (from a in _context.Avaliacao
                                join b in _context.Usuario on a.UsuarioId equals b.UsuarioId
                                join c in _context.Divisao on a.DivisaoId equals c.DivisaoId
+                               where a.Exibir == true
                                select new AvaliacaoViewModel
                                {
                                    AvaliacaoId = a.AvaliacaoId,
@@ -114,7 +119,7 @@ namespace Avaliacoes.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("AvaliacaoId,Nome,Grau,DataPP,DataMeio,DataFull,Acoes,Pubs,Bondes,Contencao,Estudos,Financeiro,Operacional,Dedicacao,Frequencia,Nota,Avaliador,DivisaoId,UsuarioId")] Avaliacao avaliacao)
+        public async Task<IActionResult> Create([Bind("AvaliacaoId,Nome,Grau,DataPP,DataMeio,DataFull,Acoes,Pubs,Bondes,Contencao,Estudos,Financeiro,Operacional,Dedicacao,Frequencia,Nota,Avaliador,DivisaoId,UsuarioId, Observacao")] Avaliacao avaliacao)
         {
             if (ModelState.IsValid)
             {
@@ -144,7 +149,7 @@ namespace Avaliacoes.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("AvaliacaoId,Nome,Grau,DataPP,DataMeio,DataFull,Acoes,Pubs,Bondes,Contencao,Estudos,Financeiro,Operacional,Dedicacao,Frequencia,Nota,Avaliador,DivisaoId,UsuarioId")] Avaliacao avaliacao)
+        public async Task<IActionResult> Edit(int id, [Bind("AvaliacaoId,Nome,Grau,DataPP,DataMeio,DataFull,Acoes,Pubs,Bondes,Contencao,Estudos,Financeiro,Operacional,Dedicacao,Frequencia,Nota,Avaliador,DivisaoId,UsuarioId,Observacao")] Avaliacao avaliacao)
         {
             if (id != avaliacao.AvaliacaoId)
             {

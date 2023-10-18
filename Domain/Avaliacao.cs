@@ -34,9 +34,10 @@ namespace Avaliacoes.Domain
         public int Frequencia { get; set; }
         public int Nota { get; set; }
         public string Avaliador { get; set; }
-            
+        public bool Exibir { get; set; }
+        [DisplayName("Observação")]
+        public string Observacao { get; set; }
         public int DivisaoId { get; set; }
-
         public int UsuarioId { get; set; }
         public Usuario Usuario { get; set;}
     }

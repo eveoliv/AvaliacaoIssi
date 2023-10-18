@@ -4,8 +4,11 @@
     ViewData["Title"] = "Avaliar";
 }
 
-<h4>Avaliação</h4>
-<div style="font-size: 12px"> Os itens abaixo devem ser preenchidos com uma nota entre zero e dez.</div>
+<h4>
+    Avaliação
+    <small style="font-size: 12px"> Os itens abaixo devem ser preenchidos com uma nota entre zero e dez.</small>
+</h4>
+
 <hr />
 <div class="row" style="font-size: 14px">
     <div class="col-md-10">
@@ -107,6 +110,7 @@
                         <input asp-for="Avaliador" class="form-control" />
                         <span asp-validation-for="Avaliador" class="text-danger"></span>
                     </div>
+
                 </div>
 
                 <div class="form-group">
@@ -119,13 +123,24 @@
                     <input type="hidden" asp-for="DivisaoId" class="form-control" />
                     <span asp-validation-for="DivisaoId" class="text-danger"></span>
                 </div>
-                <div class="form-group">                    
+                <div class="form-group">
                     <input type="hidden" asp-for="UsuarioId" class="form-control" />
                     <span asp-validation-for="UsuarioId" class="text-danger"></span>
                 </div>
 
             </div>
             <br />
+            <div class="form-group">
+                <label asp-for="Observacao" class="control-label"></label>
+                <input asp-for="Observacao" class="form-control" />
+                <span asp-validation-for="Observacao" class="text-danger"></span>
+            </div>
+            <br />
+              <div class="form-group">
+                @*<label asp-for="DataMeio" class="control-label"></label>*@
+                <input type="hidden" asp-for="Exibir" class="form-control" />
+                <span asp-validation-for="Exibir" class="text-danger"></span>
+                </div>
             <div class="form-group">
                 <input type="submit" value="Salvar" class="btn btn-primary" />
                 <a asp-action="Index" class="btn btn-success">Retornar</a>

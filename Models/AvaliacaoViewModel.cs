@@ -33,6 +33,9 @@ namespace Avaliacoes.Models
         public int Nota { get; set; }
         [DisplayName("Adm-Div")]
         public string Avaliador { get; set; }
+        [DisplayName("Observação")]
+        public string Observacao { get; set; }
+        public bool Exibir { get; set; }
         public string Divisao { get; set; }
     }
 }
